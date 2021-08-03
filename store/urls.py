@@ -11,5 +11,7 @@ urlpatterns = [
 	path('update_item/', views.updateItem, name="update_item"),
 	path('api/merch/', views.MerchList.as_view()),
 	path('process_order/', views.processOrder, name="process_order"),
-
+    path('register/', views.registerPage, name="register"),
+	path('login/', views.loginPage, name="login"),  
+	path('logout/', views.logoutUser, name="logout"),
 ]

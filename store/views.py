@@ -1,12 +1,13 @@
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
 import json
 import datetime
 from .models import * 
-
+from .forms import  CreateUserForm
 from .utils import cookieCart, cartData, guestOrder
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 def store(request):
     products = Product.objects.all()
     if request.user.is_authenticated:
@@ -219,7 +220,39 @@ def processOrder(request):
     return JsonResponse('Payment submitted..', safe=False)        
 
 
+def registerPage(request):
+    form = CreateUserForm(request.POST)
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            Customer.objects.create(
+                user = user,
+                name = user.username,
+            )
+            messages.success(request, 'account was created for ' + username)
+            return redirect('login')
+    context = {'form':form}
+    return render(request, 'store/register.html', context)
 
+def loginPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password =request.POST.get('password')
+    
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('store')
+        else:
+                messages.info(request,'Username or password is incrorrect')
+    context = {}
+    return render(request, 'store/login.html', context)
+def logoutUser(request):
+	logout(request)
+	return redirect('store')
 
 
 from rest_framework.response import Response
