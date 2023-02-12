@@ -21,6 +21,7 @@ SECRET_KEY = 'r@m3rq3$09k&)gvmo*2-8ejr*hv@a6ddjf+0)d3kqg!--zw5fl'
 MODE=config("MODE", default="dev")
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
