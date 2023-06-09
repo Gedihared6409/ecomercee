@@ -1,4 +1,4 @@
-#!/home/ali/Desktop/ecome/virtual/bin/python
+#!/home/hp/Desktop/ecomerce/virtual/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys
