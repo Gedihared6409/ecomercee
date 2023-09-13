@@ -103,7 +103,7 @@ else:
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = ['ecomercce.herokuapp.com','127.0.0.1','ecomerce.up.railway.app']
+ALLOWED_HOSTS = ['.vercel.app']
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
