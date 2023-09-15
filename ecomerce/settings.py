@@ -83,13 +83,13 @@ WSGI_APPLICATION = 'ecomerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'store',
+        'NAME': 'ecome',
         'USER': 'postgres',
     'PASSWORD':'ali',
     }
 }
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ["*"]
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
